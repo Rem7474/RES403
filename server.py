@@ -14,15 +14,16 @@ serversocket.bind(server)
 serversocket.listen(1)
 print("Le serveur est prêt à recevoir des données")
 
-# Accepter une connexion
-clientsocket,client_address  = serversocket.accept()
-print(f"Connexion depuis {client_address [0]}:{client_address [1]}")
+while True:
+    # Accepter une connexion
+    clientsocket,client_address  = serversocket.accept()
+    print(f"Connexion depuis {client_address [0]}:{client_address [1]}")
 
-# Récupérer les données du client
-data = clientsocket.recv(1024)
-print('Message reçu :', data.decode('utf-8'))
+    # Récupérer les données du client
+    data = clientsocket.recv(1024)
+    print('Message reçu :', data.decode('utf-8'))
 
-# Envoyer un message au client
-msg = "Connexion réussie : message bien reçu !"
-clientsocket.send(msg.encode('utf-8'))
-clientsocket.close()
+    # Envoyer un message au client
+    msg = "Connexion réussie : message bien reçu !"
+    clientsocket.send(msg.encode('utf-8'))
+    clientsocket.close()
