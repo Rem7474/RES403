@@ -11,10 +11,8 @@ while True:
     # lire un paquet
     raw_buffer = sniffer.recvfrom(65565)
     # analyse des en-têtes IP
-    ip_header = raw_buffer[0][0:20]
-    # decode the ip header
-    ip_header = struct.unpack('!BBHHHBBH4s4s', ip_header)
+    version, header_length, ttl, proto, src, target, data = struct.unpack('!BBHHHBBH4s4s', raw_buffer[0][14:34])
     # affichage ip src et ip dst
-    print("IP : ", ip_header[12:16], " -> ", ip_header[16:20])
+    print("IP : ", src, " -> ", target)
     # affichage du type de protocole
-    print("Protocol : ", ip_header[9])
+    print("Protocol : ", proto)
