@@ -11,7 +11,7 @@ while True:
     # lire un paquet
     raw_buffer = sniffer.recvfrom(65565)
     # extraire l'en-tête IP du début du paquet
-    ip_header = raw_buffer[14:34]
+    ip_header = raw_buffer[0][14:34]
     # dépaqueter l'en-tête IP
     iph = struct.unpack('!BBHHHBBH4s4s' , ip_header)
     # afficher les informations sur l'en-tête IP
