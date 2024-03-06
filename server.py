@@ -4,20 +4,25 @@ import socket
 # Création d'un objet socket
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# Obtenir l'ip de la machine
-ip = "192.168.70.134"
-port = 2000
+# tupple avec l'adresse et le port de la machine
+server = ("192.168.70.134", 2000)
 
 # Lier à l'adresse et au port
-serversocket.bind((ip, port))
+serversocket.bind(server)
 
 # Nombre maximum de connexions en attente
 serversocket.listen(1)
+print("Le serveur est prêt à recevoir des données")
 
-while True:
-    # Établir une connexion
-    clientsocket,addr = serversocket.accept()
-    print(f"Connexion depuis {addr[0]}:{addr[1]}")
-    msg = 'Connexion réussie : message bien reçu !' + "\r\n"
-    clientsocket.send(msg.encode('utf-8'))
-    clientsocket.close()
+# Accepter une connexion
+clientsocket,client_address  = serversocket.accept()
+print(f"Connexion depuis {client_address [0]}:{client_address [1]}")
+
+# Récupérer les données du client
+data = clientsocket.recv(1024)
+print('Message reçu :', data.decode('utf-8'))
+
+# Envoyer un message au client
+msg = "Connexion réussie : message bien reçu !"
+clientsocket.send(msg.encode)
+clientsocket.close()

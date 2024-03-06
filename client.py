@@ -4,9 +4,19 @@ import socket
 # Création d'un objet socket
 clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# Connexion au serveur
-IP="192.168.70.134"
-clientsocket.connect((IP, 2000))
+# Tupple contenant l'adresse IP et le port du serveur
+server=("192.168.70.134",2000)
+clientsocket.connect(server)
 
+# Variable contenant les données a envoyer
+data = "Bonjour, serveur !"
 # Envoi de données
-clientsocket.send(b'Hello, world')
+clientsocket.send(data.encode())
+
+# Réception de données
+data = clientsocket.recv(1024)
+# Affichage des données reçues
+print(data.decode())
+
+# Fermeture de la connexion
+clientsocket.close()
