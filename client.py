@@ -6,7 +6,7 @@ clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Connexion au serveur
 IP="192.168.70.134"
-socket.connect((IP, 2000))
+clientsocket.connect((IP, 2000))
 
 # Envoi de données
-socket.send(b'Hello, world')
+clientsocket.send(b'Hello, world')
