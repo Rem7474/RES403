@@ -10,9 +10,11 @@ sniffer = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(3))
 while True:
     # lire un paquet
     raw_buffer = sniffer.recvfrom(65565)
-    # analyse des en-têtes IP
-    version, header_length, ttl, proto, src, target, data = struct.unpack('!BBHHHBBH4s4s', raw_buffer[0][14:34])
-    # affichage ip src et ip dst
-    print("IP : ", src, " -> ", target)
-    # affichage du type de protocole
-    print("Protocol : ", proto)
+    # extraire l'en-tête IP du début du paquet
+    ip_header = raw_buffer[0][0:20]
+    # dépaqueter l'en-tête IP
+    iph = struct.unpack('!BBHHHBBH4s4s' , ip_header)
+    # afficher les informations sur l'en-tête IP
+    print ('Protocole : ' + str(iph[6]))
+    print ('Source : ' + socket.inet_ntoa(iph[8]))
+    print ('Destination : ' + socket.inet_ntoa(iph[9]))
