@@ -3,7 +3,7 @@
 import socket
 
 # créer le socket raw
-sniffer = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_IP)
+sniffer = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.ntohs(0x0003))
 
 # lier le socket à l'interface publique
 ip_host=("192.168.70.134",0)
