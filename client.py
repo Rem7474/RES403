@@ -5,7 +5,7 @@ import socket
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Connexion au serveur
-IP="192.168.243.128"
+IP="192.168.70.134"
 socket.connect((IP, 2000))
 
 # Envoi de données
