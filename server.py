@@ -24,5 +24,5 @@ print('Message reçu :', data.decode('utf-8'))
 
 # Envoyer un message au client
 msg = "Connexion réussie : message bien reçu !"
-clientsocket.send(msg.encode)
+clientsocket.send(msg.encode('utf-8'))
 clientsocket.close()
