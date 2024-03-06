@@ -4,12 +4,12 @@ import socket
 # Création d'un objet socket
 serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# Obtenir le nom de la machine locale
-host = socket.gethostname()
+# Obtenir l'ip de la machine
+ip = "192.168.70.134"
 port = 2000
 
 # Lier à l'adresse et au port
-serversocket.bind((host, port))
+serversocket.bind((ip, port))
 
 # Nombre maximum de connexions en attente
 serversocket.listen(1)
