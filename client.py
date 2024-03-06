@@ -2,7 +2,7 @@
 import socket
 
 # Création d'un objet socket
-socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+clientsocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Connexion au serveur
 IP="192.168.70.134"
