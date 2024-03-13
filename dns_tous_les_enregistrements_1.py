@@ -3,8 +3,9 @@ def get_ips_par_recherche_dns(cible, port=None):
     if port is None:
         port = 443
     try:
-        ip_address = socket.gethostbyname(cible)
-        return ip_address
+        adresse_ip = socket.gethostbyname_ex(cible)
+        ips = [ip for _, ip_list in adresse_ip for ip in ip_list]
+        return ips
     except socket.herror:
         return None
 
