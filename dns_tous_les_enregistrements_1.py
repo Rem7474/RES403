@@ -4,8 +4,7 @@ def get_ips_par_recherche_dns(cible, port=None):
         port = 443
     try:
         adresse_ip = socket.gethostbyname_ex(cible)
-        ips = [ip for _, ip_list in adresse_ip for ip in ip_list]
-        return ips
+        return adresse_ip
     except socket.herror:
         return None
 
