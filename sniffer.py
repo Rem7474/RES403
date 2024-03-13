@@ -14,7 +14,7 @@ while True:
     ip_header = raw_buffer[0][14:34]
     # dépaqueter l'en-tête IP
     iph = struct.unpack('!BBHHHBBH4s4s' , ip_header)
-    # afficher les informations sur l'en-tête IP
-    print ('Protocole : ' + str(iph[6]))
-    print ('Source : ' + socket.inet_ntoa(iph[8]))
-    print ('Destination : ' + socket.inet_ntoa(iph[9]))
+    data={'Protocole':iph[6],'Source':socket.inet_ntoa(iph[8]),'Destination':socket.inet_ntoa(iph[9])}
+    print("------------------------------------------")
+    print("|type de protocole: %s | Source: %s | Destination: %s |" % (data['Protocole'], data['Source'], data['Destination']))
+    print("------------------------------------------")
