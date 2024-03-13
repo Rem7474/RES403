@@ -8,7 +8,13 @@ def get_ips_par_recherche_dns(cible, port=None):
 #set dns server
 hostname="iut-acy.local"
 try:
-    hostname, aliaslist, ipaddrlist = socket.gethostbyname(hostname)
+    hostname, aliaslist, ipaddrlist = socket.gethostbyaddr("10.108.239.251")
     print(hostname, aliaslist, ipaddrlist)
+except socket.herror:
+    print("No DNS record found")
+
+try:
+    dns, alias, prout= socket.gethostbyname_ex(hostname)
+    print(dns, alias, prout)
 except socket.herror:
     print("No DNS record found")
