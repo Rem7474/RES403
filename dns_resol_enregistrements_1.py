@@ -3,6 +3,6 @@ import socket as socket
 ip_address="10.108.239.251"
 try:
     hostname, aliaslist, ipaddrlist = socket.gethostbyaddr(ip_address)
-    print(hostname)
+    print(hostname, aliaslist, ipaddrlist)
 except socket.herror:
     print("No DNS record found")
