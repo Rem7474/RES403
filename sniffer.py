@@ -15,6 +15,7 @@ while True:
     # dépaqueter l'en-tête IP
     iph = struct.unpack('!BBHHHBBH4s4s' , ip_header)
     data={'Protocole':iph[6],'Source':socket.inet_ntoa(iph[8]),'Destination':socket.inet_ntoa(iph[9])}
-    print("------------------------------------------")
-    print("|type de protocole: %s | Source: %s | Destination: %s |" % (data['Protocole'], data['Source'], data['Destination']))
-    print("------------------------------------------")
+    msg="type de protocole: %s | Source: %s | Destination: %s" % (data['Protocole'], data['Source'], data['Destination'])
+    print("-"*len(msg))
+    print(msg)
+    print("-"*len(msg))
