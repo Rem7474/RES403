@@ -1,3 +1,4 @@
+# 3.2c - DNS Resolver
 import dns.resolver
 types=["A","AAAA","MX","NS","SOA","TXT","CNAME"]
 domain="iut-acy.local"
