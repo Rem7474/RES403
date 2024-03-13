@@ -1,5 +1,5 @@
 #2.2 Scan de ports : scan TCP
-import sr1,IP,TCP,conf
+from scapy.all import sr1,IP,conf,TCP
 
 #script pour effectué un scan sur tout les ports d'une machine
 #on envoie un paquet TCP SYN sur chaque port
