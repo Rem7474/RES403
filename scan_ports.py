@@ -10,11 +10,6 @@ def tcp_scan(hote, port):
     if reponse_syn is None:
         return "Port {} : Filtré / Aucune réponse reçue".format(port)
     elif reponse_syn.haslayer(TCP) and reponse_syn.getlayer(TCP).flags == 0x12:
-        # Envoi du paquet ACK
-        paquet_ack = IP(dst=hote) / TCP(dport=port, flags="A", ack=reponse_syn.getlayer(TCP).seq + 1)
-        sr1(paquet_ack, verbose=False, timeout=1)
-        # Fermeture de la connexion
-        reponse_fin = sr1(IP(dst=hote) / TCP(dport=port, flags="R"), verbose=False)
         return "Port {} : Ouvert".format(port)
     elif reponse_syn.haslayer(TCP) and reponse_syn.getlayer(TCP).flags == 0x14:
         return "Port {} : Fermé".format(port)
