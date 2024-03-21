@@ -11,6 +11,6 @@ for packet in cap:
     if 'USER' in str(packet.data):
         print(packet.data)
         break
-    
+    print(packet.data)
 #fermeture du fichier pcapng
 cap.close()
