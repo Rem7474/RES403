@@ -8,6 +8,8 @@ file = scapy.rdpcap("capture.pcapng")
 
 #affichage des paquets
 for packet in file:
-    print(packet.show())
+    #recherche de "USER" dans les data des paquets
+    if "USER" in packet.load:
+        print(packet.load)
 
 
