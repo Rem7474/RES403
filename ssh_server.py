@@ -1,10 +1,6 @@
 import socket
 import ssl
-#openssl genrsa -out server.key 2048
-#openssl req -new -key server.key -out server.csr
-#openssl genrsa -out ca.key 2048
-#openssl req -new -x509 -days 365 -key ca.key -out ca.pem
-#openssl x509 -req -days 365 -in server.csr -CA ca.pem -CAkey ca.key -CAcreateserial -out server.pem
+
 
 pemServer = "ca.pem"
 keyClient = "server.key"
@@ -12,7 +8,7 @@ pemClient = "server.pem"
 
 context = ssl.SSLContext(ssl.PROTOCOL_TLS)
 context.options |= ssl.OP_NO_TLSv1 | ssl.OP_NO_TLSv1_1 | ssl.OP_NO_TLSv1_2
-context.verify_mode = ssl.CERT_REQUIRED
+context.verify_mode = ssl.CERT_NONE
 context.load_verify_locations(pemServer)
 context.load_cert_chain(certfile=pemClient, keyfile=keyClient)
 
