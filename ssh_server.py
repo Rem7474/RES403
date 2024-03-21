@@ -2,9 +2,9 @@ import socket
 import ssl
 #openssl genrsa -out server.key 2048
 #openssl req -new -key server.key -out server.csr
-#openssl x509 -req -days 365 -in server.csr -CA ca.pem -CAkey ca.key -CAcreateserial -out server.pem
 #openssl genrsa -out ca.key 2048
 #openssl req -new -x509 -days 365 -key ca.key -out ca.pem
+#openssl x509 -req -days 365 -in server.csr -CA ca.pem -CAkey ca.key -CAcreateserial -out server.pem
 
 pemServer = "ca.pem"
 keyClient = "server.key"
