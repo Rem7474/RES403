@@ -1,16 +1,13 @@
 #script pour analyser un fichier pcapng
 
 #import des librairies
-import pyshark
+import scapy.all as scapy
 
 #ouverture du fichier pcapng
-cap = pyshark.FileCapture('capture.pcapng')
+file = scapy.rdpcap("capture.pcapng")
 
-#recherche d'un paquet contenant "user" dans les données
-for packet in cap:
-    if 'USER' in str(packet.data):
-        print(packet.data)
-        break
-    print(packet.data)
-#fermeture du fichier pcapng
-cap.close()
+#affichage des paquets
+for packet in file:
+    print(packet.show())
+
+
